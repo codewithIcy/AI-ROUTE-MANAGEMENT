@@ -12,3 +12,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static("assets"))
 app.use(express.urlencoded({extended: true}))
+
+
+app.listen(3250, ()=>{
+    console.log("Listening on port 3250...")
+})
