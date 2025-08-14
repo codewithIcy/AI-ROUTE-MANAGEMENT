@@ -1,19 +1,18 @@
 import express from "express"
 import cors from "cors"
-import dotenv from "dotenv"
 import cp from "cookie-parser"
 
-dotenv.config()
-
 const app = express()
+const PORT = 3250
 
 app.set("view engine", "ejs")
 app.use(cors())
 app.use(express.json())
 app.use(express.static("assets"))
 app.use(express.urlencoded({extended: true}))
+app.use(cp())
 
 
-app.listen(3250, ()=>{
-    console.log("Listening on port 3250...")
+app.listen(PORT, ()=>{
+    console.log(`Listening on port ${PORT}...`)
 })
