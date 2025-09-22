@@ -141,6 +141,10 @@ main p{
 
   h2, p { margin-top: 1em }
 }
+
+.active{
+  border: solid var(--accent-clr) 2px;
+}
 /*************End Of Root Styling*********/
 
 @media(max-width: 800px){

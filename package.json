@@ -5,7 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "devRun": "node app.js"
+    "devRun": "nodemon app.js"
   },
   "author": "",
   "license": "CC0",
@@ -13,6 +13,7 @@
     "@tensorflow/tfjs": "^4.22.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
