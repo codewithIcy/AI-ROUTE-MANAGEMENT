@@ -29,3 +29,17 @@ function closeAllSubMenus(){
     ul.previousElementSibling.classList.remove('rotate')
   })
 }
+
+document.getElementById('sub-but').addEventListener('click', async(e)=>{
+  const payload = document.getElementById('start_addr').value
+  const response = await fetch(
+    '/route',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({payload})
+    }
+  )
+})

@@ -147,6 +147,27 @@ main p{
 }
 /*************End Of Root Styling*********/
 
+.plan{
+  padding: 10px;
+  font-size: large;
+
+  >input{
+    background: rgba(255, 255, 255, 0.4);
+  }
+  >input, button{
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    color: white;
+    text-shadow: black 0px 1px 2px;
+
+  }
+  button{
+    background-color: green;
+    font-size: inherit;
+  }
+}
+
 @media(max-width: 800px){
   body{
     grid-template-columns: 1fr;
