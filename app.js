@@ -13,6 +13,9 @@ app.use(express.static("assets"))
 app.use(express.urlencoded({extended: true}))
 app.use(cp())
 app.use('/', router)
+app.use((req, res)=>{
+    res.status(404).json({error: "not found"})
+})
 
 
 app.listen(PORT, ()=>{

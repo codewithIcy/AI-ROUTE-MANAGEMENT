@@ -4,9 +4,10 @@ import controller from "../controllers/controller.js"
 
 const router = express.Router()
 
-router.get('/', (req, res)=>{
-    navRoute.getCoodrinates()
-    res.render('main')
+
+router.get('/:page',(req, res)=>{
+    const page = req.params.page
+    res.render('main', {pageTitle: page})
 })
 
 export default router
