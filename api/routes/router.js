@@ -18,11 +18,19 @@ router.get('/:page',(req, res, next)=>{
 router.post('/route', async(req, res, next)=>{
     const payload = req.body
     console.log(payload)
-    const response = await navRoute.getCoodrinates(payload.payload)
+    const start  = await navRoute.getCoodrinates(payload.payload.start)
+    const dest  = await navRoute.getCoodrinates(payload.payload.dest)
+
+    const response = {
+        start,
+        dest
+    }
 
     if(response){
         console.log(response)
-        res.json(response)
+        const route = await navRoute.getRoutes(response)
+        console.log(route)
+        res.json(route)
     }
     else{
         res.status(400).json()
