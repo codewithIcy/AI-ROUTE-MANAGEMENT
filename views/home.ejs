@@ -2,17 +2,27 @@
     <h2>Plan</h2>
     <form class="plan">
         <label for="start_addr"><strong>Start</strong></label>
-        <input type="text" name="start_addr" id="start_addr">
+        <input type="text" name="start_addr" id="start_addr" required>
         <label for="destination"><strong>Destination</strong></label>
-        <input type="text" name="destination" id="destination">
+        <input type="text" name="destination" id="destination" required>
         <button type="submit" id="sub-but"><strong>Get Route</strong></button>
+        <p id="route-err"></p>
     </form>
     <br>
     <p id="error" style="color: red;"></p>
 </div>
 <div class="container">
     <div id="map"></div>
-    <div id="routeInfo"></div>
 </div>
 <div class="container">
+    <div id="route-info"></div>
+    <form id="log-form">
+        <label for="fuel">Fuel</label>
+        <input type="text" name="fuel" id="fuel" required>
+        <label for="Accomodation">Accomodation</label>
+        <input type="text" name="accomodation" id="accomodation" required>
+        <p id="log-err"></p>
+        <button type="submit" id="log-but">Log Info</button>
+    </form>
 </div>
+ 

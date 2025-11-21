@@ -5,6 +5,7 @@ let markers = [];
 let routeLine = null;
 
 const map = L.map('map').setView([-1.2921, 36.8219], 12)
+const routeInfo = document.getElementById('route-info');
 
 
 function toggleSidebar() {
@@ -43,6 +44,8 @@ document.getElementById('sub-but').addEventListener('click', async (e) => {
   };
 
   try {
+    document.getElementById('route-err').innerText = "Loading please wait..."
+
     const response = await fetch('/route', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -50,6 +53,7 @@ document.getElementById('sub-but').addEventListener('click', async (e) => {
     });
 
     if (response.ok) {
+    document.getElementById('route-err').innerText = ""
       const map_data = await response.json();
       console.log(map_data.start);
 
@@ -62,20 +66,18 @@ document.getElementById('sub-but').addEventListener('click', async (e) => {
 
 
     } else {
-      document.getElementById('error-msg').innerText = "Error: location not found";
+      document.getElementById('route-err').innerText = "Error: location not found";
+      document.getElementById('route-err').style.color = "red"
     }
   } catch (err) {
     console.error(err);
-    document.getElementById('error-msg').innerText = "Network error. Try again.";
+    document.getElementById('route-err').innerText = "Network error. Try again.";
+    document.getElementById('route-err').style.color = "red"
   }
 });
 
 function displayRoute(data) {
-    clearMap();
-    
-    const routeInfo = document.getElementById('route-info');
-    
-    // Use data.start and data.end instead of data.from and data.to
+    clearMap();    
     const startMarker = L.marker([data.start.coordinates.lat, data.start.coordinates.lng])
         .addTo(map)
         .bindPopup(`<b>Start:</b><br>${data.start.name}`)
@@ -98,23 +100,12 @@ function displayRoute(data) {
 
     if (routeInfo) {
         routeInfo.innerHTML = `
-            <div class="route-info">
+            <div class="route-info" style="color: white">
                 <h3>Route Information</h3>
-                <p><strong>Distance:</strong> ${data.distance}</p>
-                <p><strong>Duration:</strong> ${data.duration}</p>
-                <p><strong>From:</strong> ${data.start.name}</p>
-                <p><strong>To:</strong> ${data.end.name}</p>
-                
-                <h4 style="margin-top: 15px;">Turn-by-turn Directions:</h4>
-                <div class="steps">
-                    ${data.steps.map((step, i) => `
-                        <div class="step">
-                            ${i + 1}. ${step.instruction} <em>(${step.distance})</em>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
+                <p id="distance"><strong>Distance:</strong> ${data.distance}</p>
+                <p><strong>Duration:</strong> ${Math.floor(parseInt(data.duration)/60)}h ${parseInt(data.duration) % 60}min</p>
+                <p><strong>From:</strong> ${document.getElementById("start_addr").value}</p>
+                <p><strong>To:</strong> ${document.getElementById('destination').value}</p>`
     }
 }
 
@@ -129,3 +120,28 @@ function displayRoute(data) {
     
     routeInfo.innerHTML = '';
 }
+
+document.getElementById('log-but').addEventListener('click', async(e)=>{
+  e.preventDefault()
+
+  document.getElementById('log-err').innerText = "Loading please wait..."
+  const response = await fetch('/log', {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+      route: document.getElementById("start_addr").value + document.getElementById("destination").value,
+      fuel: document.getElementsById('fuel').value,
+      accomodation: document.getElementsById('accomodation').value,
+    })
+  })
+  if(response.ok){
+    document.getElementById('log-err').innerText = ""
+  }
+  else{
+    const data = await response.json()
+    document.getElementById('log-err').innerText = data.error
+  }
+  
+})

@@ -37,4 +37,19 @@ router.post('/route', async(req, res, next)=>{
     }
 })
 
+router.post('/log', async(req, res)=>{
+    console.log(req.body)
+    const {route, fuel, accomodation} = req.body
+    if(!accomodation || !route || !fuel){
+        return res.status(500).json({error: "Please fill the required fields"})
+    }
+    const result = await controller.postRouteLog(route, fuel, accomodation)
+    if(result){
+        res.json(result)
+    }
+    else{
+        res.status(500).json({error: "Failed, internal server error"})
+    }
+})
+
 export default router
