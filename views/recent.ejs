@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/styles/recent.css">
+<body>
+    <div class="table-container">
+        <div class="header">
+            <h1>Recent Trips</h1>
+            <input type="search" id="search" placeholder="search"/>
+             <div class="button-group">
+            <button class="btn btn-primary" onclick="addRow()">+ Add Row</button>               
+        </div>
+
+        </div>
+        <div class="table-wrapper">
+            <table id="input-table">
+                <thead>
+                    <tr>
+                        <th>Plate Number</th>
+                        <th>Type</th>
+                        <th>Trip</th>
+                        <th>Fuel</th>
+                        <th>Accomodation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="/scripts/recent.js"></script>

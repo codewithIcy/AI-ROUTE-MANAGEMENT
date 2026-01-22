@@ -1,28 +1,50 @@
+<link rel="stylesheet" href="/styles/home.css">
 <div class="container">
-    <h2>Plan</h2>
+    <h2>Plan Trip</h2>
     <form class="plan">
-        <label for="start_addr"><strong>Start</strong></label>
-        <input type="text" name="start_addr" id="start_addr" required>
-        <label for="destination"><strong>Destination</strong></label>
-        <input type="text" name="destination" id="destination" required>
-        <button type="submit" id="sub-but"><strong>Get Route</strong></button>
+        <label for="start_addr">Start</label>
+        <input type="text" name="start_addr" id="start_addr" placeholder="e.g. Nairobi" required>
+        
+        <label for="destination">Destination</label>
+        <input type="text" name="destination" id="destination" placeholder="e.g. Mombasa" required>
+        
+        <button type="submit" id="sub-but">Get Route</button>
         <p id="route-err"></p>
     </form>
-    <br>
-    <p id="error" style="color: red;"></p>
 </div>
+
 <div class="container">
+    <div id="route-controls">
+        <!-- Dynamic Route Buttons will appear here -->
+    </div>
     <div id="map"></div>
 </div>
+
 <div class="container">
     <div id="route-info"></div>
+    
+    <h3>Trip Log</h3>
     <form id="log-form">
-        <label for="fuel">Fuel</label>
-        <input type="text" name="fuel" id="fuel" required>
-        <label for="Accomodation">Accomodation</label>
-        <input type="text" name="accomodation" id="accomodation" required>
+        <label for="type">Vehicle Type</label>
+        <select name="type" id="type">
+            <option value="">Select Type</option>
+            <option value="Motorcycle">Motorcycle</option>
+            <option value="Car">Car</option>
+            <option value="Pickup">Pickup</option>
+            <option value="Truck">Truck</option>
+            <option value="Large Truck">Large Truck</option>
+        </select>
+        
+        <label for="plate">License Plate</label>
+        <input type="text" name="plate" id="plate" required>
+        
+        <label for="fuel">Fuel (KSH)</label>
+        <input type="number" name="fuel" id="fuel" required>
+        
+        <label for="accomodation">Accommodation Cost</label>
+        <input type="number" name="accomodation" id="accomodation" required>
+        
         <p id="log-err"></p>
         <button type="submit" id="log-but">Log Info</button>
     </form>
 </div>
- 

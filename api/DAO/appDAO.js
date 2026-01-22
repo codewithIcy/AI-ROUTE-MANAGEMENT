@@ -39,14 +39,25 @@ export default class UserDao {
         }
     }
 
-    static async uploadTrip(route, fuel, accomodation){
+    static async uploadTrip(route, fuel, accomodation, type, plate, distance){
         try {
             const db = await this.connectDB()
             const collection = db.collection("Trips")
-            return await collection.insertOne({route, fuel, accomodation})
+            return await collection.insertOne({route, fuel, accomodation, type, plate, distance})
         } catch (error) {
             console.log("Log error: ", error)
             return null
+        }
+    }
+
+    static async getTrips(){
+        try {
+            const db = await this.connectDB()
+            const collection = db.collection("Trips")
+
+            return await collection.find({}).toArray()
+        } catch (error) {
+            console.log("Trip error: ", error)
         }
     }
 }

@@ -1,0 +1,253 @@
+.table-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .header h1 {
+        color: #374151;
+        font-size: 28px;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: inherit;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+        background: #ffffff;
+        color: #374151;
+        border: 2px solid #e5e7eb;
+    }
+
+    .btn-secondary:hover {
+        background: #f9fafb;
+        border-color: #9fb9e0;
+    }
+
+    /* Table Wrapper */
+    .table-wrapper {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    /* Table Styling */
+    #input-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    /* Table Head */
+    #input-table thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff;
+    }
+
+    #input-table thead tr th {
+        padding: 16px 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #input-table thead tr th:last-child {
+        border-right: none;
+    }
+
+    /* Table Body */
+    #input-table tbody tr {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    #input-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    #input-table tbody tr:hover {
+        background-color: #f9fafb;
+    }
+
+    #input-table tbody tr td {
+        padding: 0;
+        border-right: 1px solid #e5e7eb;
+        height: 48px;
+    }
+
+    #input-table tbody tr td:last-child {
+        border-right: none;
+    }
+
+    /* Input Styling - Excel-like */
+    #input-table tbody tr td input,
+    #input-table tbody tr td select {
+        width: 100%;
+        height: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #374151;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    #input-table tbody tr td input:focus,
+    #input-table tbody tr td select:focus {
+        background-color: #eff6ff;
+        border: 2px solid #667eea;
+        padding: 10px 14px;
+    }
+
+    #input-table tbody tr td input::placeholder {
+        color: #9ca3af;
+    }
+
+    input[type="search"] {
+        border: unset;
+        -webkit-appearance: none;
+        appearance: none;
+        padding: 10px 14px;
+        border: 2px solid transparent; /* placeholder border to stabilize size */
+        border-radius: 4px;
+        transition: all 0.2s ease;      /* smooth animation */
+    }
+
+    input[type="search"]:focus {
+        background-color: #eff6ff;
+        border-color: #667eea;
+    }
+
+
+    /* Select Dropdown */
+    #input-table tbody tr td select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 36px;
+    }
+
+    /* Delete Button Column */
+    .delete-cell {
+        text-align: center;
+        width: 80px;
+    }
+
+    .btn-delete {
+        padding: 8px 12px;
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .btn-delete:hover {
+        background: #dc2626;
+        transform: scale(1.05);
+    }
+
+    /* Empty State */
+    #input-table tbody:empty::after {
+        content: 'No rows available. Click "Add Row" to get started.';
+        display: block;
+        padding: 60px 40px;
+        text-align: center;
+        color: #9ca3af;
+        font-style: italic;
+        font-size: 16px;
+    }
+
+    /* Output Section */
+    .output-section {
+        margin-top: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .output-section h2 {
+        color: #374151;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    #output {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        color: #374151;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+        }
+
+        #input-table {
+            font-size: 12px;
+        }
+
+        #input-table tbody tr td {
+            height: 44px;
+        }
+
+        #input-table tbody tr td input,
+        #input-table tbody tr td select {
+            padding: 10px 12px;
+            font-size: 12px;
+        }
+    }
